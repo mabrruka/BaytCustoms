@@ -1,0 +1,41 @@
+.contact-page {
+    min-height: 100vh;
+}
+
+.contact-section {
+    padding: 0 7vw 120px;
+}
+
+.contact-form {
+    max-width: 700px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 16px;
+
+    border: 1px solid #171717;
+    background: transparent;
+
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.contact-form .button {
+    border: 1px solid #171717;
+}

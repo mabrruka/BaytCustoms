@@ -1,0 +1,93 @@
+.home {
+    width: 100%;
+}
+
+.hero {
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    align-items: center;
+
+    padding: 8vw;
+
+    background:
+            linear-gradient(
+                    rgba(0, 0, 0, 0.25),
+                    rgba(0, 0, 0, 0.25)
+            ),
+            url("/images/hero.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    color: white;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 9vw, 130px);
+    line-height: 0.9;
+    font-weight: 400;
+    margin-bottom: 35px;
+}
+
+.hero-description {
+    max-width: 500px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero .button-secondary {
+    border-color: white;
+    color: white;
+}
+
+.hero .button-secondary:hover {
+    background: white;
+    color: #171717;
+}
+
+.intro {
+    padding: 140px 7vw;
+    text-align: center;
+}
+
+.section-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.section-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+}
+
+.intro h2 {
+    font-size: clamp(45px, 7vw, 90px);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 30px;
+}
+
+.section-description {
+    max-width: 550px;
+    margin: auto;
+    line-height: 1.7;
+}

@@ -1,0 +1,37 @@
+.showcase-page {
+    min-height: 100vh;
+}
+
+.showcase-grid {
+    padding: 0 7vw 120px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+.showcase-image {
+    aspect-ratio: 4 / 5;
+    background: #d8d3ca;
+    margin-bottom: 20px;
+}
+
+.showcase-card h2 {
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.showcase-card p {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+@media (max-width: 800px) {
+
+    .showcase-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

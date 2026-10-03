@@ -1,0 +1,39 @@
+.materials-page {
+    min-height: 100vh;
+}
+
+.materials-grid {
+    padding: 0 7vw 120px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+.material-image {
+    aspect-ratio: 1 / 1;
+
+    background: #d8d3ca;
+
+    margin-bottom: 25px;
+}
+
+.material-card h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.material-card p {
+    line-height: 1.7;
+    max-width: 400px;
+}
+
+@media (max-width: 800px) {
+
+    .materials-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
