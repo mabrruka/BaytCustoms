@@ -3,11 +3,12 @@ const imageUrl =
 
 export const images = {
     // HOME PAGE
-    heroImage:
+    homeHero:
         "https://i.pinimg.com/736x/d5/25/13/d52513f9c541f20da2a5193231004ce7.jpg",
 
-    homeAboutImage: imageUrl,
-    homeFurnitureImage: imageUrl,
+    homeIntro: imageUrl,
+
+    homeFeaturedFurniture: imageUrl,
 
     // SHOWCASE PAGE
     showcaseImage1: imageUrl,
