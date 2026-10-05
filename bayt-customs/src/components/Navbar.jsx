@@ -1,34 +1,80 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../styles/navbar.css";
 
 function Navbar() {
     return (
         <header className="navbar">
-
-            <Link to="/" className="navbar-logo">
-                BAYT CUSTOMS
-            </Link>
-
-            <nav className="navbar-links">
-
-                <Link to="/">
-                    Home
+            <div className="navbar-inner">
+                <Link to="/" className="navbar-logo">
+                    Bayt Customs
                 </Link>
 
-                <Link to="/showcase">
-                    Showcase
-                </Link>
+                <nav className="navbar-links">
+                    <NavLink
+                        to="/"
+                        end
+                        className={({ isActive }) =>
+                            isActive ? "active" : ""
+                        }
+                    >
+                        Home
+                    </NavLink>
 
-                <Link to="/materials">
-                    Materials
-                </Link>
+                    <NavLink
+                        to="/showcase"
+                        className={({ isActive }) =>
+                            isActive ? "active" : ""
+                        }
+                    >
+                        Showcase
+                    </NavLink>
 
-                <Link to="/contact">
-                    Contact
-                </Link>
+                    <NavLink
+                        to="/materials"
+                        className={({ isActive }) =>
+                            isActive ? "active" : ""
+                        }
+                    >
+                        Materials
+                    </NavLink>
 
-            </nav>
+                    <NavLink
+                        to="/contact"
+                        className={({ isActive }) =>
+                            isActive ? "active" : ""
+                        }
+                    >
+                        Contact
+                    </NavLink>
+                </nav>
 
+                <div className="navbar-actions">
+                    <div className="language-switcher">
+                        <button
+                            type="button"
+                            className="language-option active-language"
+                        >
+                            EN
+                        </button>
+
+                        <span className="language-divider">|</span>
+
+                        <button
+                            type="button"
+                            className="language-option"
+                        >
+                            AR
+                        </button>
+                    </div>
+
+                    <Link
+                        to="/contact"
+                        className="specification-button"
+                    >
+                        Send Specification
+                    </Link>
+                </div>
+            </div>
         </header>
     );
 }
