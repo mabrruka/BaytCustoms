@@ -1,86 +1,151 @@
+import { Link } from "react-router-dom";
 import { images } from "../images";
 import "../styles/materials.css";
 
 function Materials() {
     const materials = [
         {
-            image: images.materialWood,
-            name: "Wood",
+            name: "Oak",
+            image: images.materialLookbookOak,
             description:
-                "Natural and engineered wood options selected for durability, character and warmth.",
+                "Strong, durable hardwood with distinctive grain patterns. Ages beautifully with a warm golden patina.",
         },
         {
-            image: images.materialStone,
-            name: "Stone",
+            name: "Walnut",
+            image: images.materialLookbookWalnut,
             description:
-                "Stone surfaces chosen to bring texture and a timeless finish to your furniture.",
+                "Rich, dark heartwood prized for its deep chocolate tones and smooth, fine grain.",
         },
         {
-            image: images.materialMetal,
-            name: "Metal",
+            name: "Ash",
+            image: images.materialLookbookAsh,
             description:
-                "Metal details and structures that add strength and architectural character.",
+                "Light-toned hardwood with a pronounced grain that adds texture and visual interest.",
         },
         {
-            image: images.materialFabric,
-            name: "Fabric",
+            name: "Pine",
+            image: images.materialLookbookPine,
             description:
-                "Carefully selected fabrics that bring softness, comfort and personality.",
+                "Soft, warm wood with a rustic character. Takes stain beautifully for varied finishes.",
+        },
+        {
+            name: "MDF",
+            image: images.materialLookbookMDF,
+            description:
+                "Engineered board offering a perfectly smooth surface for painted finishes.",
+        },
+        {
+            name: "Plywood",
+            image: images.materialLookbookPlywood,
+            description:
+                "Multi-layered board providing exceptional strength and stability.",
+        },
+        {
+            name: "Veneer",
+            image: images.materialLookbookVeneer,
+            description:
+                "Thin slices of premium hardwood bonded to stable substrates, combining beauty with efficiency.",
+        },
+        {
+            name: "Laminate",
+            image: images.materialLookbookLaminate,
+            description:
+                "Durable, low-maintenance surface available in countless colors and textures.",
         },
     ];
 
+    const handleLearnMore = (materialName) => {
+        const subject = encodeURIComponent(
+            `Learn More - ${materialName}`
+        );
+
+        const body = encodeURIComponent(
+            `Hello Bayt Customs,\n\nI would like to learn more about using ${materialName} for my custom furniture project.\n\nPlease share more information about this material, available finishes, and suitable applications.\n\nThank you.`
+        );
+
+        window.location.href =
+            `mailto:contactus@baytcustoms.com?subject=${subject}&body=${body}`;
+    };
+
     return (
-        <main className="materials">
+        <main className="materials-page">
+            {/* =========================
+                HERO
+            ========================= */}
 
-            <section className="page-header">
-                <div className="section-container">
+            <section className="materials-hero">
+                <div className="materials-hero-overlay"></div>
 
-                    <p className="section-eyebrow">
-                        MATERIALS & FINISHES
+                <div className="materials-hero-content">
+                    <p className="materials-hero-eyebrow">
+                        Architectural Essence
                     </p>
 
-                    <h1>
-                        Choose your
-                        <br />
-                        materials.
-                    </h1>
+                    <h1>Wood &amp; Materials</h1>
 
-                    <p>
-                        Every material contributes to the character of the
-                        finished piece. Choose the combinations that suit
-                        your space.
+                    <p className="materials-hero-description">
+                        We source and work with the finest natural materials,
+                        chosen for their beauty, durability, and character.
+                        Every custom commission is configured to honor the
+                        distinct organic structure of the wood.
                     </p>
 
+                    <p className="materials-hero-location">
+                        Handcrafted in Libya
+                    </p>
                 </div>
             </section>
 
+            {/* =========================
+                MATERIALS LOOKBOOK
+            ========================= */}
 
-            <section className="materials-section">
-                <div className="section-container">
+            <section className="materials-lookbook">
+                <div className="materials-lookbook-header">
+                    <p className="materials-lookbook-eyebrow">
+                        Materials Lookbook
+                    </p>
 
-                    <div className="materials-grid">
+                    <h2>Our Crafted Selection</h2>
 
-                        {materials.map((material, index) => (
-                            <article
-                                className="material-card"
-                                key={index}
-                            >
-                                <img
-                                    src={material.image}
-                                    alt={material.name}
-                                />
+                    <p className="materials-lookbook-subtitle">
+                        Curated for Mediterranean Living
+                    </p>
+                </div>
 
-                                <h2>{material.name}</h2>
+                <div className="materials-lookbook-grid">
+                    {materials.map((material) => (
+                        <article
+                            className="material-lookbook-card"
+                            key={material.name}
+                        >
+                            <img
+                                src={material.image}
+                                alt={material.name}
+                                className="material-lookbook-image"
+                            />
 
-                                <p>{material.description}</p>
-                            </article>
-                        ))}
+                            <div className="material-lookbook-content">
+                                <h3>{material.name}</h3>
 
-                    </div>
+                                <p>
+                                    {material.description}
+                                </p>
 
+                                <button
+                                    type="button"
+                                    className="material-learn-more"
+                                    onClick={() =>
+                                        handleLearnMore(material.name)
+                                    }
+                                >
+                                    Learn More
+                                </button>
+                            </div>
+                        </article>
+                    ))}
                 </div>
             </section>
-
         </main>
     );
 }
