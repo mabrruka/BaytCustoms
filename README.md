@@ -176,3 +176,13 @@ EMAIL_TO=
 
 Do not commit `.env` files or credentials to GitHub.
 
+## Security
+
+Do not commit:
+
+```text
+.env
+node_modules/
+uploads/
+dist/
+```
