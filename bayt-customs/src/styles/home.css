@@ -1,93 +1,834 @@
 .home {
+    --cream: #FCF8F0;
+    --sage: #B5BDAC;
+    --brown: #392E26;
+    --brown-light: #4B3D34;
+    --taupe: #E2D9CD;
+
     width: 100%;
+    overflow: hidden;
+    background: #ffffff;
+    color: #392E26;
 }
 
+
+/* =====================================================
+   FONT RULES
+===================================================== */
+
+.home h1,
+.home h2,
+.home h3,
+.home .hero h1,
+.home .legacy-content h2,
+.home .section-heading h2,
+.home .category-content h3,
+.home .gallery-header h2,
+.home .gallery-card-content h3,
+.home .process-heading h2,
+.home .process-number,
+.home .materials-header h2,
+.home .material-content h3,
+.home .cta-section h2 {
+    font-family: "Instrument Serif", Georgia, serif;
+}
+
+.home p,
+.home a,
+.home .hero-description,
+.home .hero-eyebrow,
+.home .section-eyebrow,
+.home .legacy-description,
+.home .legacy-badge,
+.home .category-content p,
+.home .gallery-eyebrow,
+.home .gallery-link,
+.home .gallery-card-content p,
+.home .explore-piece,
+.home .process-card h3,
+.home .process-card p,
+.home .materials-link,
+.home .material-content p,
+.home .cta-description,
+.home .cta-button,
+.home .cta-email-text,
+.home .cta-email {
+    font-family: "Geist", Arial, sans-serif;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
 .hero {
+    position: relative;
+
     min-height: calc(100vh - 80px);
 
     display: flex;
     align-items: center;
 
-    padding: 8vw;
-
-    background:
-            linear-gradient(
-                    rgba(0, 0, 0, 0.25),
-                    rgba(0, 0, 0, 0.25)
-            ),
-            url("/images/hero.jpg");
+    padding: 80px 7vw;
 
     background-size: cover;
     background-position: center;
 
-    color: white;
+    color: #ffffff;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.30);
 }
 
 .hero-content {
-    max-width: 800px;
+    position: relative;
+    z-index: 2;
+
+    max-width: 760px;
 }
 
 .hero-eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.25em;
-    margin-bottom: 25px;
+    margin: 0 0 24px;
+
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
 }
 
 .hero h1 {
-    font-size: clamp(55px, 9vw, 130px);
-    line-height: 0.9;
+    margin: 0 0 30px;
+
+    font-size: 72px;
     font-weight: 400;
-    margin-bottom: 35px;
+    line-height: 0.95;
 }
 
 .hero-description {
-    max-width: 500px;
+    max-width: 720px;
+
+    margin: 0;
+
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   WHERE WOOD MEETS HOME
+===================================================== */
+
+.legacy-section {
+    padding: 120px 6vw;
+
+    background: #FCF8F0;
+}
+
+.legacy-container {
+    max-width: 1280px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.legacy-content {
+    max-width: 600px;
+}
+
+.legacy-content .section-eyebrow {
+    margin: 0 0 20px;
+
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.legacy-content h2 {
+    margin: 0 0 30px;
+
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.legacy-description {
+    margin: 0 0 20px;
+
     font-size: 18px;
+    font-weight: 400;
+    line-height: 1.65;
+}
+
+.legacy-badge {
+    display: inline-flex;
+
+    margin-top: 12px;
+
+    padding: 11px 17px;
+
+    background: #B5BDAC;
+    color: #000000;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.legacy-image-wrapper {
+    width: 100%;
+}
+
+.legacy-image {
+    display: block;
+
+    width: 100%;
+    height: 600px;
+
+    object-fit: cover;
+
+    border-radius: 24px;
+}
+
+.legacy-caption {
+    margin: 18px 0 0;
+
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+
+/* =====================================================
+   ARCHITECTURAL WOODWORKING
+===================================================== */
+
+.categories-section {
+    padding: 120px 6vw;
+
+    background: #ffffff;
+}
+
+.section-heading {
+    max-width: 1280px;
+    margin: 0 auto 55px;
+}
+
+.section-heading .section-eyebrow {
+    margin: 0 0 18px;
+
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.section-heading h2 {
+    margin: 0;
+
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.categories-feature-grid {
+    max-width: 1280px;
+    margin: 0 auto 55px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 32px;
+}
+
+.categories-secondary-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 32px;
+}
+
+.category-card {
+    min-width: 0;
+}
+
+.category-image {
+    display: block;
+
+    width: 100%;
+    height: 300px;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+}
+
+.category-card-large .category-image {
+    height: 480px;
+}
+
+.category-content {
+    padding-top: 20px;
+}
+
+.category-content h3 {
+    margin: 0 0 10px;
+
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.category-content p {
+    max-width: 500px;
+
+    margin: 0;
+
+    font-size: 15px;
+    font-weight: 400;
     line-height: 1.6;
-    margin-bottom: 40px;
 }
 
-.hero-buttons {
+
+/* =====================================================
+   MASTERPIECE GALLERY
+===================================================== */
+
+.gallery-section {
+    padding: 120px 6vw;
+
+    background: #E2D9CD;
+}
+
+.gallery-header {
+    max-width: 1280px;
+    margin: 0 auto 55px;
+
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 40px;
 }
 
-.hero .button-secondary {
-    border-color: white;
-    color: white;
+.gallery-eyebrow {
+    margin: 0 0 18px;
+
+    color: #392E26;
+
+    font-size: 14px;
+    font-weight: 400;
 }
 
-.hero .button-secondary:hover {
-    background: white;
-    color: #171717;
+.gallery-header h2 {
+    margin: 0;
+
+    color: #392E26;
+
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1;
 }
 
-.intro {
-    padding: 140px 7vw;
+.gallery-link {
+    flex-shrink: 0;
+
+    color: #392E26;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    text-decoration: none;
+}
+
+.gallery-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 32px;
+}
+
+.gallery-card {
+    min-width: 0;
+}
+
+.gallery-image {
+    display: block;
+
+    width: 100%;
+    height: 470px;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+}
+
+.gallery-card-content {
+    padding-top: 20px;
+}
+
+.gallery-card-content h3 {
+    margin: 0 0 10px;
+
+    color: #392E26;
+
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.gallery-card-content p {
+    margin: 0 0 16px;
+
+    color: #392E26;
+
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.explore-piece {
+    color: #392E26;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   HOW WE WORK
+===================================================== */
+
+.process-section {
+    padding: 120px 6vw;
+
+    background: #ffffff;
+}
+
+.process-heading {
+    max-width: 1280px;
+    margin: 0 auto 60px;
+}
+
+.process-heading .section-eyebrow {
+    margin: 0 0 18px;
+
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.process-heading h2 {
+    margin: 0;
+
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.process-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 30px;
+}
+
+.process-card {
+    padding-top: 24px;
+
+    border-top: 1px solid rgba(57, 46, 38, 0.25);
+}
+
+.process-number {
+    display: block;
+
+    margin-bottom: 30px;
+
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.process-card h3 {
+    margin: 0 0 12px;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.process-card p {
+    margin: 0;
+
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.65;
+}
+
+
+/* =====================================================
+   MATERIALS
+===================================================== */
+
+.materials-section {
+    padding: 110px 6vw;
+
+    background: #392E26;
+
+    color: #FCF8F0;
+}
+
+.materials-header {
+    max-width: 1280px;
+    margin: 0 auto 50px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 40px;
+}
+
+.materials-header h2 {
+    max-width: 650px;
+
+    margin: 0;
+
+    color: #FCF8F0;
+
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.05;
+}
+
+.materials-link {
+    flex-shrink: 0;
+
+    color: #FCF8F0;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    text-decoration: none;
+}
+
+
+/* FOUR MATERIALS SIDE BY SIDE */
+
+.materials-row {
+    max-width: 1280px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: row;
+
+    gap: 16px;
+
+    align-items: stretch;
+}
+
+.material-card {
+    width: 296px;
+    height: 96px;
+
+    flex: 1 1 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 16px;
+
+    background: #4B3D34;
+
+    border-radius: 16px;
+}
+
+.material-image {
+    width: 64px;
+    height: 64px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+}
+
+.material-content {
+    min-width: 0;
+}
+
+.material-content h3 {
+    margin: 0 0 4px;
+
+    color: #ffffff;
+
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.material-content p {
+    margin: 0;
+
+    color: #FCF8F0;
+
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+
+/* =====================================================
+   FINAL CTA
+===================================================== */
+
+.cta-section {
+    padding: 120px 6vw;
+
+    background: #FCF8F0;
+
+    color: #392E26;
+
     text-align: center;
 }
 
-.section-container {
-    max-width: 800px;
-    margin: auto;
+.cta-content {
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.section-eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    margin-bottom: 20px;
-}
+.cta-section h2 {
+    margin: 0 0 24px;
 
-.intro h2 {
-    font-size: clamp(45px, 7vw, 90px);
+    font-size: 56px;
     font-weight: 400;
     line-height: 1;
-    margin-bottom: 30px;
 }
 
-.section-description {
-    max-width: 550px;
-    margin: auto;
-    line-height: 1.7;
+.cta-description {
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.cta-buttons {
+    margin: 35px 0 28px;
+
+    display: flex;
+    justify-content: center;
+
+    gap: 14px;
+}
+
+.cta-button {
+    min-width: 190px;
+
+    padding: 15px 24px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    text-decoration: none;
+}
+
+.cta-button-light {
+    background: #E2D9CD;
+    color: #392E26;
+}
+
+.cta-button-dark {
+    background: #392E26;
+    color: #FCF8F0;
+}
+
+.cta-email-text {
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.cta-email {
+    color: #392E26;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .materials-row {
+        flex-wrap: wrap;
+    }
+
+    .material-card {
+        width: calc(50% - 8px);
+        flex: 0 0 calc(50% - 8px);
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 50px;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .hero {
+        min-height: 75vh;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+    }
+
+    .legacy-container {
+        grid-template-columns: 1fr;
+    }
+
+    .legacy-image {
+        height: 500px;
+    }
+
+    .categories-feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .categories-secondary-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .materials-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: 70vh;
+        padding: 60px 5vw;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .hero-description {
+        font-size: 18px;
+    }
+
+    .legacy-section,
+    .categories-section,
+    .gallery-section,
+    .process-section,
+    .materials-section,
+    .cta-section {
+        padding: 80px 5vw;
+    }
+
+    .legacy-content h2,
+    .section-heading h2,
+    .process-heading h2,
+    .gallery-header h2,
+    .cta-section h2 {
+        font-size: 44px;
+    }
+
+    .legacy-description {
+        font-size: 16px;
+    }
+
+    .legacy-image {
+        height: 420px;
+    }
+
+    .categories-secondary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-image,
+    .category-card-large .category-image {
+        height: 350px;
+    }
+
+    .gallery-image {
+        height: 420px;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .materials-header h2 {
+        font-size: 40px;
+    }
+
+    .materials-row {
+        flex-direction: column;
+    }
+
+    .material-card {
+        width: 100%;
+        flex: none;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .cta-button {
+        width: 100%;
+    }
 }
