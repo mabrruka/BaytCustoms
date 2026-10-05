@@ -18,3 +18,58 @@ The project includes a modern frontend for showcasing custom furniture, material
 * Responsive navigation
 * Backend project submission API
 
+## Showcase
+
+The showcase includes:
+
+* Kitchens
+* Dining Rooms
+* Living Rooms
+* Bedrooms
+
+Projects can include images, materials, descriptions, and project information.
+
+## Materials
+
+Supported materials include:
+
+* Oak
+* Walnut
+* Ash
+* Pine
+* MDF
+* Plywood
+* Veneer
+* Laminate
+
+## Project Submission
+
+The project form supports:
+
+* Name
+* Email
+* Phone
+* Contact method
+* Project type
+* Project description
+* Showcase piece
+* Dimensions
+* Appointment date and time
+* Site visit date and time
+* Reference files
+* Additional information
+
+Supported files:
+
+```text
+JPG
+PNG
+PDF
+```
+
+Maximum file size:
+
+```text
+10 MB
+```
+
