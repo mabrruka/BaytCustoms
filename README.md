@@ -72,4 +72,73 @@ Maximum file size:
 ```text
 10 MB
 ```
+## Tech Stack
+
+### Frontend
+
+* React
+* Vite
+* JavaScript
+* React Router
+* CSS
+
+### Backend
+
+* Node.js
+* Express
+* Multer
+* Nodemailer
+* CORS
+* dotenv
+
+## Project Structure
+
+```text
+bayt-customs/
+│
+├── bayt-customs/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── styles/
+│   │   ├── data/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── server/
+│   │   ├── uploads/
+│   │   ├── server.js
+│   │   ├── package.json
+│   │   └── .env
+│   │
+│   ├── package.json
+│   └── package-lock.json
+│
+└── README.md
+```
+
+## Requirements
+
+* Node.js
+* npm
+
+## Frontend Setup
+
+```bash
+cd bayt-customs
+npm install
+npm run dev
+```
+
+The frontend will run on the Vite development server.
+
+## Backend Setup
+
+```bash
+cd server
+npm install
+npm start
+```
+
+The backend runs on port `5001` by default.
 
