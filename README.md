@@ -141,4 +141,38 @@ npm start
 ```
 
 The backend runs on port `5001` by default.
+## API
+
+### Health Check
+
+```http
+GET /
+```
+
+### Project Submission
+
+```http
+POST /api/project-submission
+```
+
+The project submission endpoint accepts `multipart/form-data`.
+
+## Environment Variables
+
+Create a `.env` file inside the `server` directory.
+
+```env
+PORT=5001
+
+SMTP_HOST=
+SMTP_PORT=
+SMTP_SECURE=false
+SMTP_USER=
+SMTP_PASSWORD=
+
+EMAIL_FROM=
+EMAIL_TO=
+```
+
+Do not commit `.env` files or credentials to GitHub.
 
