@@ -1,119 +1,548 @@
-import { images } from "../images";
+import { useState } from "react";
 import "../styles/contact.css";
 
 function Contact() {
+    const [showcaseInterest, setShowcaseInterest] = useState(false);
+    const [selectedFile, setSelectedFile] = useState("");
+
+    const handleFileChange = (event) => {
+        const file = event.target.files?.[0];
+
+        if (!file) {
+            setSelectedFile("");
+            return;
+        }
+
+        setSelectedFile(file.name);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.currentTarget);
+
+        const name = formData.get("name") || "";
+        const email = formData.get("email") || "";
+        const phone = formData.get("phone") || "";
+        const contactMethod = formData.get("contactMethod") || "";
+        const projectType = formData.get("projectType") || "";
+        const projectDescription = formData.get("projectDescription") || "";
+        const showcasePiece = formData.get("showcasePiece") || "";
+        const width = formData.get("width") || "";
+        const height = formData.get("height") || "";
+        const depth = formData.get("depth") || "";
+        const appointmentDate = formData.get("appointmentDate") || "";
+        const appointmentTime = formData.get("appointmentTime") || "";
+        const siteVisitDate = formData.get("siteVisitDate") || "";
+        const siteVisitTime = formData.get("siteVisitTime") || "";
+        const additionalInformation =
+            formData.get("additionalInformation") || "";
+
+        const subject = encodeURIComponent(
+            `Bayt Customs Project Specification - ${name}`
+        );
+
+        const body = encodeURIComponent(
+            `Hello Bayt Customs,
+
+I would like to share my project specifications.
+
+CLIENT INFORMATION
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Preferred Contact Method: ${contactMethod}
+
+PROJECT INFORMATION
+Project Type: ${projectType}
+
+Description:
+${projectDescription}
+
+SHOWCASE INTEREST
+${showcaseInterest ? `Yes - ${showcasePiece || "Showcase piece selected"}` : "No"}
+
+APPROXIMATE DIMENSIONS
+Width: ${width} cm
+Height: ${height} cm
+Depth: ${depth} cm
+
+PREFERRED APPOINTMENT
+Date: ${appointmentDate}
+Time: ${appointmentTime}
+
+PREFERRED SITE VISIT
+Date: ${siteVisitDate}
+Time: ${siteVisitTime}
+
+UPLOADED FILE
+${selectedFile || "No file attached"}
+
+ADDITIONAL INFORMATION
+${additionalInformation}
+
+Please prepare a tailored proposal, material selection, and production plan.
+
+Thank you.`
+        );
+
+        window.location.href =
+            `mailto:mabrruka@gmail.com?subject=${subject}&body=${body}`;
+    };
+
     return (
-        <main className="contact">
+        <main className="contact-page">
+            <section className="contact-hero">
+                <p className="contact-eyebrow">
+                    Artisanal Woodworking Partnerships
+                </p>
 
-            <section className="contact-header">
-                <div className="section-container">
+                <h1>Get in Touch</h1>
 
-                    <p className="section-eyebrow">
-                        GET IN TOUCH
-                    </p>
-
-                    <h1>
-                        Let's create
-                        <br />
-                        something together.
-                    </h1>
-
-                    <p>
-                        Tell us about your space, your ideas and the furniture
-                        you're looking to create.
-                    </p>
-
-                </div>
+                <p className="contact-hero-description">
+                    Share your full project specifications here and our team
+                    will turn them into a tailored proposal, material
+                    selection, and production plan.
+                </p>
             </section>
 
+            <section className="contact-content">
+                <div className="contact-information">
+                    <div className="contact-information-header">
+                        <p className="contact-section-eyebrow">
+                            Contact Information
+                        </p>
+                    </div>
 
-            <section className="contact-section">
-                <div className="section-container">
+                    <div className="contact-details">
+                        <div className="contact-detail">
+                            <p className="contact-detail-label">Email Us</p>
+                            <a href="mailto:contactus@baytcustoms.com">
+                                contactus@baytcustoms.com
+                            </a>
+                        </div>
 
-                    <div className="contact-grid">
+                        <div className="contact-detail">
+                            <p className="contact-detail-label">Phone</p>
+                            <a href="tel:+218911234567">
+                                +218 91 123 4567
+                            </a>
+                        </div>
 
-                        {/* IMAGE */}
-                        <div className="contact-image">
-                            <img
-                                src={images.contactInterior}
-                                alt="Bayt Customs interior"
+                        <div className="contact-detail">
+                            <p className="contact-detail-label">WhatsApp</p>
+                            <a href="https://wa.me/218911234567">
+                                +218 91 123 4567
+                            </a>
+                        </div>
+
+                        <div className="contact-detail">
+                            <p className="contact-detail-label">
+                                Our Workshop
+                            </p>
+                            <p className="contact-detail-value">
+                                Alandalus District, Woodworking Zone Street 4
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="contact-specs-card">
+                        <div>
+                            <p className="contact-specs-title">
+                                Share Your Project Specs
+                            </p>
+
+                            <p className="contact-specs-description">
+                                Send us your room dimensions, preferred
+                                materials, and functional needs. We’ll prepare
+                                a detailed proposal and production plan.
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            className="contact-specs-button"
+                            onClick={() =>
+                                document
+                                    .getElementById("project-form")
+                                    ?.scrollIntoView({
+                                        behavior: "smooth",
+                                        block: "start",
+                                    })
+                            }
+                        >
+                            Share Project Specs
+                        </button>
+
+                        <p className="contact-response-time">
+                            Proposal Response: Within 24 hours
+                        </p>
+                    </div>
+                </div>
+
+                <div className="contact-form-wrapper">
+                    <div className="contact-form-header">
+                        <p className="contact-section-eyebrow">
+                            Share Your Project Specs
+                        </p>
+
+                        <p className="contact-form-intro">
+                            Add your full project specifications here and
+                            we’ll prepare a detailed proposal, material
+                            selection, and production plan.
+                        </p>
+                    </div>
+
+                    <form
+                        id="project-form"
+                        className="contact-form"
+                        onSubmit={handleSubmit}
+                    >
+                        <div className="contact-field-grid">
+                            <div className="contact-field">
+                                <label htmlFor="name">Your Name</label>
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    placeholder="e.g. Mabruka Al-Taher"
+                                    required
+                                />
+                            </div>
+
+                            <div className="contact-field">
+                                <label htmlFor="email">Email Address</label>
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    placeholder="contactus@baytcustoms.com"
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className="contact-field-grid">
+                            <div className="contact-field">
+                                <label htmlFor="phone">Phone Number</label>
+                                <input
+                                    id="phone"
+                                    name="phone"
+                                    type="tel"
+                                    placeholder="+218 91 123 4567"
+                                    required
+                                />
+                            </div>
+
+                            <div className="contact-field">
+                                <label>Preferred Contact Method</label>
+
+                                <div className="contact-radio-group">
+                                    <label className="contact-radio">
+                                        <input
+                                            type="radio"
+                                            name="contactMethod"
+                                            value="Email"
+                                            defaultChecked
+                                        />
+                                        <span>Email</span>
+                                    </label>
+
+                                    <label className="contact-radio">
+                                        <input
+                                            type="radio"
+                                            name="contactMethod"
+                                            value="Phone"
+                                        />
+                                        <span>Phone</span>
+                                    </label>
+
+                                    <label className="contact-radio">
+                                        <input
+                                            type="radio"
+                                            name="contactMethod"
+                                            value="WhatsApp"
+                                        />
+                                        <span>WhatsApp</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="contact-field">
+                            <label htmlFor="projectType">Project Type</label>
+
+                            <select
+                                id="projectType"
+                                name="projectType"
+                                defaultValue=""
+                                required
+                            >
+                                <option value="" disabled>
+                                    Select Kitchen, Wardrobe, Dining Table,
+                                    Living Room...
+                                </option>
+                                <option value="Kitchen">Kitchen</option>
+                                <option value="Wardrobe">Wardrobe</option>
+                                <option value="Dining Table">
+                                    Dining Table
+                                </option>
+                                <option value="Living Room">
+                                    Living Room
+                                </option>
+                                <option value="Bedroom">
+                                    Bedroom
+                                </option>
+                                <option value="Custom Furniture">
+                                    Custom Furniture
+                                </option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div className="contact-field">
+                            <label htmlFor="projectDescription">
+                                Describe what you’d like
+                            </label>
+
+                            <textarea
+                                id="projectDescription"
+                                name="projectDescription"
+                                rows="6"
+                                placeholder="Include room dimensions, preferred wood, finish, layout style, storage needs, electrical requirements, and any reference images..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div className="contact-showcase-toggle">
+                            <label className="contact-checkbox">
+                                <input
+                                    type="checkbox"
+                                    checked={showcaseInterest}
+                                    onChange={(event) =>
+                                        setShowcaseInterest(
+                                            event.target.checked
+                                        )
+                                    }
+                                />
+
+                                <span>
+                                    Yes, I saw something I liked
+                                </span>
+                            </label>
+                        </div>
+
+                        {showcaseInterest && (
+                            <div className="contact-field">
+                                <label htmlFor="showcasePiece">
+                                    Select Showcase Piece
+                                </label>
+
+                                <select
+                                    id="showcasePiece"
+                                    name="showcasePiece"
+                                    defaultValue=""
+                                >
+                                    <option value="" disabled>
+                                        Select a Showcase Piece
+                                    </option>
+                                    <option value="Walnut Hearth Kitchen">
+                                        Walnut Hearth Kitchen
+                                    </option>
+                                    <option value="Oakline Kitchen">
+                                        Oakline Kitchen
+                                    </option>
+                                    <option value="Verde Pantry Kitchen">
+                                        Verde Pantry Kitchen
+                                    </option>
+                                    <option value="Espresso Frame Kitchen">
+                                        Espresso Frame Kitchen
+                                    </option>
+                                    <option value="Cedar Ridge Kitchen">
+                                        Cedar Ridge Kitchen
+                                    </option>
+                                    <option value="Mediterranean Oak Kitchen">
+                                        Mediterranean Oak Kitchen
+                                    </option>
+                                </select>
+                            </div>
+                        )}
+
+                        <div className="contact-field">
+                            <label>Approximate Dimensions (cm)</label>
+
+                            <div className="contact-dimensions-grid">
+                                <div>
+                                    <span>Width</span>
+                                    <input
+                                        name="width"
+                                        type="number"
+                                        min="0"
+                                        placeholder="e.g. 180"
+                                    />
+                                </div>
+
+                                <div>
+                                    <span>Height</span>
+                                    <input
+                                        name="height"
+                                        type="number"
+                                        min="0"
+                                        placeholder="e.g. 75"
+                                    />
+                                </div>
+
+                                <div>
+                                    <span>Depth</span>
+                                    <input
+                                        name="depth"
+                                        type="number"
+                                        min="0"
+                                        placeholder="e.g. 90"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="contact-field-grid">
+                            <div className="contact-field">
+                                <label htmlFor="appointmentDate">
+                                    Preferred Appointment Date
+                                </label>
+
+                                <input
+                                    id="appointmentDate"
+                                    name="appointmentDate"
+                                    type="date"
+                                />
+                            </div>
+
+                            <div className="contact-field">
+                                <label htmlFor="appointmentTime">
+                                    Preferred Time
+                                </label>
+
+                                <input
+                                    id="appointmentTime"
+                                    name="appointmentTime"
+                                    type="time"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="contact-field-grid">
+                            <div className="contact-field">
+                                <label htmlFor="siteVisitDate">
+                                    Preferred Site Visit Date
+                                </label>
+
+                                <input
+                                    id="siteVisitDate"
+                                    name="siteVisitDate"
+                                    type="date"
+                                />
+                            </div>
+
+                            <div className="contact-field">
+                                <label htmlFor="siteVisitTime">
+                                    Preferred Time
+                                </label>
+
+                                <input
+                                    id="siteVisitTime"
+                                    name="siteVisitTime"
+                                    type="time"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="contact-field">
+                            <label htmlFor="projectFile">
+                                Upload Images or Plans
+                            </label>
+
+                            <label
+                                htmlFor="projectFile"
+                                className="contact-file-upload"
+                            >
+                                <span className="contact-file-main">
+                                    {selectedFile ||
+                                        "Drag files or click to browse"}
+                                </span>
+
+                                <span className="contact-file-help">
+                                    Support for JPG, PNG, PDF up to 10MB
+                                </span>
+                            </label>
+
+                            <input
+                                id="projectFile"
+                                name="projectFile"
+                                type="file"
+                                accept=".jpg,.jpeg,.png,.pdf"
+                                onChange={handleFileChange}
+                                className="contact-file-input"
                             />
                         </div>
 
+                        <div className="contact-field">
+                            <label htmlFor="additionalInformation">
+                                Additional Information
+                            </label>
 
-                        {/* FORM */}
-                        <div className="contact-form-wrapper">
-
-                            <form className="contact-form">
-
-                                <div className="form-group">
-                                    <label htmlFor="name">
-                                        Name
-                                    </label>
-
-                                    <input
-                                        id="name"
-                                        type="text"
-                                        placeholder="Your name"
-                                    />
-                                </div>
-
-
-                                <div className="form-group">
-                                    <label htmlFor="email">
-                                        Email
-                                    </label>
-
-                                    <input
-                                        id="email"
-                                        type="email"
-                                        placeholder="Your email"
-                                    />
-                                </div>
-
-
-                                <div className="form-group">
-                                    <label htmlFor="phone">
-                                        Phone
-                                    </label>
-
-                                    <input
-                                        id="phone"
-                                        type="tel"
-                                        placeholder="Your phone number"
-                                    />
-                                </div>
-
-
-                                <div className="form-group">
-                                    <label htmlFor="message">
-                                        Tell us about your project
-                                    </label>
-
-                                    <textarea
-                                        id="message"
-                                        rows="6"
-                                        placeholder="Tell us what you have in mind..."
-                                    ></textarea>
-                                </div>
-
-
-                                <button
-                                    type="submit"
-                                    className="button button-primary"
-                                >
-                                    Send Enquiry
-                                </button>
-
-                            </form>
-
+                            <textarea
+                                id="additionalInformation"
+                                name="additionalInformation"
+                                rows="5"
+                                placeholder="Add delivery notes, budget guidance, or any other project context..."
+                            ></textarea>
                         </div>
 
-                    </div>
+                        <div className="contact-form-actions">
+                            <button
+                                type="submit"
+                                className="contact-submit-button"
+                            >
+                                Send Project Specs
+                            </button>
 
+                            <button
+                                type="button"
+                                className="contact-site-visit-button"
+                                onClick={() => {
+                                    document
+                                        .getElementById("siteVisitDate")
+                                        ?.focus();
+                                }}
+                            >
+                                Request a Site Visit
+                            </button>
+                        </div>
+
+                        <p className="contact-form-note">
+                            Our team reviews every project specification and
+                            responds with a tailored proposal within 24 hours.
+                        </p>
+                    </form>
                 </div>
             </section>
 
+            <section className="contact-workshop">
+                <img
+                    src="https://i.pinimg.com/736x/99/42/86/9942864bac9349ba264a2e6dc7847ab5.jpg"
+                    alt="Bayt Customs Workshop in Tripoli"
+                    className="contact-workshop-image"
+                />
+
+                <div className="contact-workshop-card">
+                    <h2>Bayt Customs Workshop — Tripoli, Libya</h2>
+
+                    <p>
+                        Alandalus District, Woodworking Zone Street 4 — Site
+                        visits by appointment
+                    </p>
+                </div>
+            </section>
         </main>
     );
 }
