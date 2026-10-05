@@ -1,93 +1,121 @@
 import { useState } from "react";
 import "../styles/contact.css";
 
+const API_URL = "http://localhost:5001";
+
 function Contact() {
     const [showcaseInterest, setShowcaseInterest] = useState(false);
-    const [selectedFile, setSelectedFile] = useState("");
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState("");
+    const [submitMessage, setSubmitMessage] = useState("");
 
     const handleFileChange = (event) => {
         const file = event.target.files?.[0];
 
         if (!file) {
-            setSelectedFile("");
+            setSelectedFile(null);
             return;
         }
 
-        setSelectedFile(file.name);
+        const allowedTypes = [
+            "image/jpeg",
+            "image/png",
+            "application/pdf",
+        ];
+
+        const maxFileSize = 10 * 1024 * 1024;
+
+        if (!allowedTypes.includes(file.type)) {
+            event.target.value = "";
+            setSelectedFile(null);
+            setSubmitStatus("error");
+            setSubmitMessage(
+                "Only JPG, PNG, and PDF files are allowed."
+            );
+            return;
+        }
+
+        if (file.size > maxFileSize) {
+            event.target.value = "";
+            setSelectedFile(null);
+            setSubmitStatus("error");
+            setSubmitMessage(
+                "The selected file is too large. Maximum size is 10MB."
+            );
+            return;
+        }
+
+        setSelectedFile(file);
+        setSubmitStatus("");
+        setSubmitMessage("");
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const formData = new FormData(event.currentTarget);
+        setIsSubmitting(true);
+        setSubmitStatus("");
+        setSubmitMessage("");
 
-        const name = formData.get("name") || "";
-        const email = formData.get("email") || "";
-        const phone = formData.get("phone") || "";
-        const contactMethod = formData.get("contactMethod") || "";
-        const projectType = formData.get("projectType") || "";
-        const projectDescription = formData.get("projectDescription") || "";
-        const showcasePiece = formData.get("showcasePiece") || "";
-        const width = formData.get("width") || "";
-        const height = formData.get("height") || "";
-        const depth = formData.get("depth") || "";
-        const appointmentDate = formData.get("appointmentDate") || "";
-        const appointmentTime = formData.get("appointmentTime") || "";
-        const siteVisitDate = formData.get("siteVisitDate") || "";
-        const siteVisitTime = formData.get("siteVisitTime") || "";
-        const additionalInformation =
-            formData.get("additionalInformation") || "";
+        try {
+            const form = event.currentTarget;
+            const formData = new FormData(form);
 
-        const subject = encodeURIComponent(
-            `Bayt Customs Project Specification - ${name}`
-        );
+            if (!showcaseInterest) {
+                formData.delete("showcasePiece");
+            }
 
-        const body = encodeURIComponent(
-            `Hello Bayt Customs,
+            const response = await fetch(
+                `${API_URL}/api/project-submission`,
+                {
+                    method: "POST",
+                    body: formData,
+                }
+            );
 
-I would like to share my project specifications.
+            const data = await response.json();
 
-CLIENT INFORMATION
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Preferred Contact Method: ${contactMethod}
+            if (!response.ok || !data.success) {
+                throw new Error(
+                    data.message ||
+                    "Something went wrong while sending your project specifications."
+                );
+            }
 
-PROJECT INFORMATION
-Project Type: ${projectType}
+            setSubmitStatus("success");
+            setSubmitMessage(
+                "Thank you. Your project specifications have been received. Our team will review them and respond within 24 hours."
+            );
 
-Description:
-${projectDescription}
+            form.reset();
 
-SHOWCASE INTEREST
-${showcaseInterest ? `Yes - ${showcasePiece || "Showcase piece selected"}` : "No"}
+            setShowcaseInterest(false);
+            setSelectedFile(null);
+        } catch (error) {
+            console.error("Project submission error:", error);
 
-APPROXIMATE DIMENSIONS
-Width: ${width} cm
-Height: ${height} cm
-Depth: ${depth} cm
+            setSubmitStatus("error");
+            setSubmitMessage(
+                error.message ||
+                "We could not send your project specifications. Please try again."
+            );
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
-PREFERRED APPOINTMENT
-Date: ${appointmentDate}
-Time: ${appointmentTime}
+    const scrollToForm = () => {
+        document
+            .getElementById("project-form")
+            ?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
+    };
 
-PREFERRED SITE VISIT
-Date: ${siteVisitDate}
-Time: ${siteVisitTime}
-
-UPLOADED FILE
-${selectedFile || "No file attached"}
-
-ADDITIONAL INFORMATION
-${additionalInformation}
-
-Please prepare a tailored proposal, material selection, and production plan.
-
-Thank you.`
-        );
-
-        window.location.href =
-            `mailto:mabrruka@gmail.com?subject=${subject}&body=${body}`;
+    const focusSiteVisitDate = () => {
+        document.getElementById("siteVisitDate")?.focus();
     };
 
     return (
@@ -116,21 +144,30 @@ Thank you.`
 
                     <div className="contact-details">
                         <div className="contact-detail">
-                            <p className="contact-detail-label">Email Us</p>
+                            <p className="contact-detail-label">
+                                Email Us
+                            </p>
+
                             <a href="mailto:contactus@baytcustoms.com">
                                 contactus@baytcustoms.com
                             </a>
                         </div>
 
                         <div className="contact-detail">
-                            <p className="contact-detail-label">Phone</p>
+                            <p className="contact-detail-label">
+                                Phone
+                            </p>
+
                             <a href="tel:+218911234567">
                                 +218 91 123 4567
                             </a>
                         </div>
 
                         <div className="contact-detail">
-                            <p className="contact-detail-label">WhatsApp</p>
+                            <p className="contact-detail-label">
+                                WhatsApp
+                            </p>
+
                             <a href="https://wa.me/218911234567">
                                 +218 91 123 4567
                             </a>
@@ -140,6 +177,7 @@ Thank you.`
                             <p className="contact-detail-label">
                                 Our Workshop
                             </p>
+
                             <p className="contact-detail-value">
                                 Alandalus District, Woodworking Zone Street 4
                             </p>
@@ -162,14 +200,7 @@ Thank you.`
                         <button
                             type="button"
                             className="contact-specs-button"
-                            onClick={() =>
-                                document
-                                    .getElementById("project-form")
-                                    ?.scrollIntoView({
-                                        behavior: "smooth",
-                                        block: "start",
-                                    })
-                            }
+                            onClick={scrollToForm}
                         >
                             Share Project Specs
                         </button>
@@ -200,7 +231,10 @@ Thank you.`
                     >
                         <div className="contact-field-grid">
                             <div className="contact-field">
-                                <label htmlFor="name">Your Name</label>
+                                <label htmlFor="name">
+                                    Your Name
+                                </label>
+
                                 <input
                                     id="name"
                                     name="name"
@@ -211,7 +245,10 @@ Thank you.`
                             </div>
 
                             <div className="contact-field">
-                                <label htmlFor="email">Email Address</label>
+                                <label htmlFor="email">
+                                    Email Address
+                                </label>
+
                                 <input
                                     id="email"
                                     name="email"
@@ -224,7 +261,10 @@ Thank you.`
 
                         <div className="contact-field-grid">
                             <div className="contact-field">
-                                <label htmlFor="phone">Phone Number</label>
+                                <label htmlFor="phone">
+                                    Phone Number
+                                </label>
+
                                 <input
                                     id="phone"
                                     name="phone"
@@ -235,7 +275,9 @@ Thank you.`
                             </div>
 
                             <div className="contact-field">
-                                <label>Preferred Contact Method</label>
+                                <label>
+                                    Preferred Contact Method
+                                </label>
 
                                 <div className="contact-radio-group">
                                     <label className="contact-radio">
@@ -270,7 +312,9 @@ Thank you.`
                         </div>
 
                         <div className="contact-field">
-                            <label htmlFor="projectType">Project Type</label>
+                            <label htmlFor="projectType">
+                                Project Type
+                            </label>
 
                             <select
                                 id="projectType"
@@ -282,21 +326,34 @@ Thank you.`
                                     Select Kitchen, Wardrobe, Dining Table,
                                     Living Room...
                                 </option>
-                                <option value="Kitchen">Kitchen</option>
-                                <option value="Wardrobe">Wardrobe</option>
+
+                                <option value="Kitchen">
+                                    Kitchen
+                                </option>
+
+                                <option value="Wardrobe">
+                                    Wardrobe
+                                </option>
+
                                 <option value="Dining Table">
                                     Dining Table
                                 </option>
+
                                 <option value="Living Room">
                                     Living Room
                                 </option>
+
                                 <option value="Bedroom">
                                     Bedroom
                                 </option>
+
                                 <option value="Custom Furniture">
                                     Custom Furniture
                                 </option>
-                                <option value="Other">Other</option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
                             </select>
                         </div>
 
@@ -346,21 +403,27 @@ Thank you.`
                                     <option value="" disabled>
                                         Select a Showcase Piece
                                     </option>
+
                                     <option value="Walnut Hearth Kitchen">
                                         Walnut Hearth Kitchen
                                     </option>
+
                                     <option value="Oakline Kitchen">
                                         Oakline Kitchen
                                     </option>
+
                                     <option value="Verde Pantry Kitchen">
                                         Verde Pantry Kitchen
                                     </option>
+
                                     <option value="Espresso Frame Kitchen">
                                         Espresso Frame Kitchen
                                     </option>
+
                                     <option value="Cedar Ridge Kitchen">
                                         Cedar Ridge Kitchen
                                     </option>
+
                                     <option value="Mediterranean Oak Kitchen">
                                         Mediterranean Oak Kitchen
                                     </option>
@@ -369,11 +432,14 @@ Thank you.`
                         )}
 
                         <div className="contact-field">
-                            <label>Approximate Dimensions (cm)</label>
+                            <label>
+                                Approximate Dimensions (cm)
+                            </label>
 
                             <div className="contact-dimensions-grid">
                                 <div>
                                     <span>Width</span>
+
                                     <input
                                         name="width"
                                         type="number"
@@ -384,6 +450,7 @@ Thank you.`
 
                                 <div>
                                     <span>Height</span>
+
                                     <input
                                         name="height"
                                         type="number"
@@ -394,6 +461,7 @@ Thank you.`
 
                                 <div>
                                     <span>Depth</span>
+
                                     <input
                                         name="depth"
                                         type="number"
@@ -466,8 +534,9 @@ Thank you.`
                                 className="contact-file-upload"
                             >
                                 <span className="contact-file-main">
-                                    {selectedFile ||
-                                        "Drag files or click to browse"}
+                                    {selectedFile
+                                        ? selectedFile.name
+                                        : "Drag files or click to browse"}
                                 </span>
 
                                 <span className="contact-file-help">
@@ -498,22 +567,34 @@ Thank you.`
                             ></textarea>
                         </div>
 
+                        {submitMessage && (
+                            <div
+                                className={`contact-submit-message ${
+                                    submitStatus === "success"
+                                        ? "success"
+                                        : "error"
+                                }`}
+                                role="alert"
+                            >
+                                {submitMessage}
+                            </div>
+                        )}
+
                         <div className="contact-form-actions">
                             <button
                                 type="submit"
                                 className="contact-submit-button"
+                                disabled={isSubmitting}
                             >
-                                Send Project Specs
+                                {isSubmitting
+                                    ? "Sending..."
+                                    : "Send Project Specs"}
                             </button>
 
                             <button
                                 type="button"
                                 className="contact-site-visit-button"
-                                onClick={() => {
-                                    document
-                                        .getElementById("siteVisitDate")
-                                        ?.focus();
-                                }}
+                                onClick={focusSiteVisitDate}
                             >
                                 Request a Site Visit
                             </button>
@@ -535,11 +616,13 @@ Thank you.`
                 />
 
                 <div className="contact-workshop-card">
-                    <h2>Bayt Customs Workshop — Tripoli, Libya</h2>
+                    <h2>
+                        Bayt Customs Workshop — Tripoli, Libya
+                    </h2>
 
                     <p>
-                        Alandalus District, Woodworking Zone Street 4 — Site
-                        visits by appointment
+                        Alandalus District, Woodworking Zone Street 4 —
+                        Site visits by appointment
                     </p>
                 </div>
             </section>
