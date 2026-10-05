@@ -610,14 +610,14 @@ function Contact() {
 
             <section className="contact-workshop">
                 <img
-                    src="https://i.pinimg.com/736x/99/42/86/9942864bac9349ba264a2e6dc7847ab5.jpg"
+                    src="https://i.pinimg.com/1200x/f0/f1/e5/f0f1e595fe5e61d29ed2c88ec7f35db9.jpg"
                     alt="Bayt Customs Workshop in Tripoli"
                     className="contact-workshop-image"
                 />
 
                 <div className="contact-workshop-card">
                     <h2>
-                        Bayt Customs Workshop — Tripoli, Libya
+                        Bayt Customs Workshop — Benghazi, Libya
                     </h2>
 
                     <p>
