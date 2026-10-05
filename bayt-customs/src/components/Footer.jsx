@@ -53,7 +53,7 @@ function Footer() {
                         </p>
 
                         <p>
-                            <span>Location:</span> Tripoli, Libya
+                            <span>Location:</span> Benghazi, Libya
                         </p>
                     </div>
                 </div>

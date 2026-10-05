@@ -1,37 +1,514 @@
+/* =========================================================
+   SHOWCASE PAGE
+========================================================= */
+
 .showcase-page {
-    min-height: 100vh;
+    width: 100%;
+    background: #FCF8F0;
+    color: #392E26;
 }
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.showcase-hero {
+    width: 100%;
+    min-height: 440px;
+
+    background: #FCF8F0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 80px;
+}
+
+.showcase-hero-content {
+    width: 100%;
+    max-width: 980px;
+
+    text-align: center;
+}
+
+.showcase-eyebrow {
+    margin: 0 0 20px;
+
+    font-family: "Geist", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+
+    color: #392E26;
+}
+
+.showcase-hero h1 {
+    margin: 0 0 24px;
+
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: 72px;
+    font-weight: 400;
+    line-height: 0.98;
+
+    color: #392E26;
+}
+
+.showcase-hero-description {
+    max-width: 780px;
+    margin: 0 auto;
+
+    font-family: "Geist", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.55;
+
+    color: #392E26;
+}
+
+/* =========================================================
+   COLLECTION
+========================================================= */
+
+.showcase-collection {
+    width: 100%;
+    background: #FCF8F0;
+
+    padding: 20px 80px 100px;
+}
+
+/* =========================================================
+   CATEGORY TABS
+========================================================= */
+
+.showcase-tabs {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 16px;
+
+    margin-bottom: 56px;
+}
+
+.showcase-tab {
+    min-width: 150px;
+    height: 46px;
+
+    padding: 0 22px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    border: 1px solid #392E26;
+    border-radius: 999px;
+
+    background: #FCF8F0;
+    color: #392E26;
+
+    font-family: "Geist", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+}
+
+.showcase-tab:hover {
+    background: #E2D9CD;
+}
+
+.showcase-tab.active {
+    background: #392E26;
+    color: #FCF8F0;
+    border-color: #392E26;
+}
+
+/* =========================================================
+   GALLERY GRID
+========================================================= */
 
 .showcase-grid {
-    padding: 0 7vw 120px;
+    width: 100%;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    gap: 30px;
+    column-gap: 48px;
+    row-gap: 64px;
 }
 
-.showcase-image {
-    aspect-ratio: 4 / 5;
-    background: #d8d3ca;
-    margin-bottom: 20px;
+/* =========================================================
+   SHOWCASE CARD
+========================================================= */
+
+.showcase-card {
+    width: 100%;
+    min-width: 0;
 }
 
-.showcase-card h2 {
-    font-size: 22px;
+.showcase-card-image {
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 624 / 440;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+}
+
+.showcase-card-info {
+    width: 100%;
+    min-height: 117px;
+
+    padding-top: 20px;
+}
+
+.showcase-card-info h2 {
+    margin: 0 0 6px;
+
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.05;
+
+    color: #392E26;
+}
+
+.showcase-material {
+    margin: 0 0 12px;
+
+    font-family: "Geist", Arial, sans-serif;
+    font-size: 12px;
     font-weight: 400;
-    margin-bottom: 8px;
+    line-height: 1.4;
+
+    color: #6B5B4D;
 }
 
-.showcase-card p {
+.showcase-description {
+    max-width: 560px;
+
+    margin: 0;
+
+    font-family: "Geist", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.55;
+
+    color: #392E26;
+}
+
+/* =========================================================
+   CARD ACTIONS
+========================================================= */
+
+.showcase-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    margin-top: 20px;
+}
+
+.showcase-quote-button {
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    background: #FCF8F0;
+    color: #392E26;
+
+    border: 1px solid #392E26;
+    border-radius: 5px;
+
+    font-family: "Geist", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+}
+
+.showcase-quote-button:hover {
+    background: #392E26;
+    color: #FCF8F0;
+}
+
+.showcase-details {
+    font-family: "Geist", Arial, sans-serif;
     font-size: 14px;
-    opacity: 0.7;
+    font-weight: 600;
+    line-height: 1;
+
+    color: #392E26;
+    text-decoration: none;
+
+    border-bottom: 1px solid #392E26;
+    padding-bottom: 3px;
 }
 
-@media (max-width: 800px) {
+.showcase-details:hover {
+    opacity: 0.65;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.showcase-cta {
+    width: 100%;
+
+    background: #FCF8F0;
+    color: #392E26;
+
+    padding: 92px 80px;
+}
+
+.showcase-cta-content {
+    max-width: 900px;
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.showcase-cta h2 {
+    margin: 0 0 20px;
+
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1;
+
+    color: #392E26;
+}
+
+.showcase-cta p {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    font-family: "Geist", Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+
+    color: #6B5B4D;
+}
+
+.showcase-cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-top: 32px;
+}
+
+.showcase-cta-button {
+    min-height: 48px;
+
+    padding: 0 24px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 5px;
+
+    font-family: "Geist", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+
+    text-decoration: none;
+
+    transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+}
+
+.showcase-cta-light {
+    background: #E2D9CD;
+    color: #392E26;
+}
+
+.showcase-cta-light:hover {
+    background: #D5CABC;
+}
+
+.showcase-cta-dark {
+    background: #392E26;
+    color: #FCF8F0;
+}
+
+.showcase-cta-dark:hover {
+    background: #4B3D34;
+    color: #FCF8F0;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+    .showcase-hero {
+        padding: 70px 40px;
+    }
+
+    .showcase-collection {
+        padding: 20px 40px 80px;
+    }
+
+    .showcase-grid {
+        column-gap: 32px;
+        row-gap: 52px;
+    }
+
+    .showcase-cta {
+        padding: 80px 40px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+    .showcase-hero {
+        min-height: 380px;
+        padding: 60px 24px;
+    }
+
+    .showcase-eyebrow {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .showcase-hero h1 {
+        font-size: 56px;
+        margin-bottom: 20px;
+    }
+
+    .showcase-hero-description {
+        font-size: 17px;
+    }
+
+    .showcase-collection {
+        padding: 10px 24px 70px;
+    }
+
+    .showcase-tabs {
+        gap: 10px;
+
+        overflow-x: auto;
+
+        padding-bottom: 8px;
+        margin-bottom: 40px;
+
+        justify-content: flex-start;
+    }
+
+    .showcase-tab {
+        min-width: max-content;
+        height: 42px;
+
+        padding: 0 18px;
+
+        font-size: 13px;
+        flex-shrink: 0;
+    }
 
     .showcase-grid {
         grid-template-columns: 1fr;
+
+        row-gap: 50px;
     }
 
+    .showcase-card-info {
+        min-height: auto;
+    }
+
+    .showcase-card-info h2 {
+        font-size: 30px;
+    }
+
+    .showcase-description {
+        font-size: 15px;
+    }
+
+    .showcase-cta {
+        padding: 70px 24px;
+    }
+
+    .showcase-cta h2 {
+        font-size: 46px;
+    }
+
+    .showcase-cta p {
+        font-size: 16px;
+    }
+
+    .showcase-cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .showcase-cta-button {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+    .showcase-hero {
+        padding: 50px 20px;
+    }
+
+    .showcase-hero h1 {
+        font-size: 48px;
+    }
+
+    .showcase-hero-description {
+        font-size: 16px;
+    }
+
+    .showcase-collection {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .showcase-card-info h2 {
+        font-size: 28px;
+    }
+
+    .showcase-card-actions {
+        flex-wrap: wrap;
+    }
+
+    .showcase-cta {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .showcase-cta h2 {
+        font-size: 40px;
+    }
 }
