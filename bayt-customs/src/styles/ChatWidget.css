@@ -1,0 +1,209 @@
+
+.bayt-chat-widget {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 2147483000;
+    font-family: "Geist Sans", Geist, sans-serif;
+}
+
+/* Floating oval: exact dimensions */
+.bayt-chat-launcher {
+    box-sizing: border-box;
+    width: 149px;
+    height: 42px;
+    min-width: 149px;
+    min-height: 42px;
+    padding: 0 12px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    border: none;
+    border-radius: 999px;
+    background-color: #B5BDAC;
+    color: #392E26;
+
+    font-family: "Geist Sans", Geist, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(57, 46, 38, 0.12);
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.bayt-chat-launcher:hover {
+    background-color: #A7B09D;
+    transform: translateY(-2px);
+}
+
+.bayt-chat-launcher svg {
+    display: block;
+    flex-shrink: 0;
+}
+
+.bayt-chat-launcher span {
+    display: inline-block;
+}
+
+/* Chat panel */
+.bayt-chat-panel {
+    position: absolute;
+    right: 0;
+    bottom: 54px;
+
+    width: 360px;
+    height: 480px;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100dvh - 110px);
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    border: 1px solid rgba(57, 46, 38, 0.12);
+    border-radius: 18px;
+    background: #FFFFFF;
+    color: #392E26;
+    box-shadow: 0 12px 40px rgba(57, 46, 38, 0.18);
+
+    font-family: "Geist Sans", Geist, sans-serif;
+}
+
+.bayt-chat-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px;
+
+    background: #B5BDAC;
+    color: #392E26;
+}
+
+.bayt-chat-title {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.bayt-chat-subtitle {
+    margin-top: 5px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.bayt-chat-close {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #392E26;
+    font-family: inherit;
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.bayt-chat-messages {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 18px;
+    overflow-y: auto;
+}
+
+.bayt-chat-message {
+    max-width: 88%;
+    padding: 11px 13px;
+    border-radius: 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.bayt-chat-message--assistant {
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    background: #F2F3EF;
+    color: #392E26;
+}
+
+.bayt-chat-message--user {
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    background: #B5BDAC;
+    color: #392E26;
+}
+
+.bayt-chat-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid #E9E9E5;
+}
+
+.bayt-chat-form input {
+    box-sizing: border-box;
+    flex: 1;
+    min-width: 0;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid #DDDCD6;
+    border-radius: 12px;
+    outline: none;
+
+    background: #FFFFFF;
+    color: #392E26;
+    font: 400 13px "Geist Sans", Geist, sans-serif;
+}
+
+.bayt-chat-form input:focus {
+    border-color: #8D9982;
+}
+
+.bayt-chat-form button {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+
+    border: none;
+    border-radius: 12px;
+    background: #B5BDAC;
+    color: #392E26;
+    cursor: pointer;
+}
+
+.bayt-chat-form button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+    .bayt-chat-widget {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .bayt-chat-panel {
+        position: fixed;
+        right: 16px;
+        bottom: 70px;
+        left: 16px;
+        width: auto;
+        height: min(480px, calc(100dvh - 100px));
+        max-width: none;
+        max-height: none;
+    }
+}
