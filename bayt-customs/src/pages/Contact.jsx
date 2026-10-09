@@ -179,7 +179,7 @@ function Contact() {
                             </p>
 
                             <p className="contact-detail-value">
-                                Alandalus District, Woodworking Zone Street 4
+                                Benghazi, Libya
                             </p>
                         </div>
                     </div>
@@ -239,7 +239,7 @@ function Contact() {
                                     id="name"
                                     name="name"
                                     type="text"
-                                    placeholder="e.g. Mabruka Al-Taher"
+                                    placeholder="e.g. John Doe"
                                     required
                                 />
                             </div>
@@ -253,7 +253,7 @@ function Contact() {
                                     id="email"
                                     name="email"
                                     type="email"
-                                    placeholder="contactus@baytcustoms.com"
+                                    placeholder="Johndoe@Gmail.com"
                                     required
                                 />
                             </div>
@@ -617,11 +617,11 @@ function Contact() {
 
                 <div className="contact-workshop-card">
                     <h2>
-                        Bayt Customs Workshop — Benghazi, Libya
+                        Bayt Customs — Benghazi, Libya
                     </h2>
 
                     <p>
-                        Alandalus District, Woodworking Zone Street 4 —
+                        Tripoli Road —
                         Site visits by appointment
                     </p>
                 </div>
