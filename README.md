@@ -1,119 +1,47 @@
 # Bayt Customs
 
-A premium custom furniture and architectural woodworking website for Bayt Customs.
+A custom furniture and architectural woodworking website for **Bayt Customs**, based in Tripoli, Libya.
 
-The project includes a modern frontend for showcasing custom furniture, materials, and projects, along with a backend system for handling project inquiries and file submissions.
+The website showcases bespoke furniture, materials, and collections, and allows customers to submit project specifications and appointment requests.
+
+**Languages:** English and Arabic (EN / AR)
 
 ## Features
 
 * Responsive website
-* Home page
-* Showcase page
-* Materials page
-* Contact page
-* Custom project inquiry form
-* File uploads
-* Project specifications
-* Appointment requests
-* Responsive navigation
-* Backend project submission API
+* English and Arabic language options
+* Home, Showcase, Materials, and Contact pages
+* Custom furniture project inquiry form
+* Project dimensions and appointment requests
+* JPG, PNG, and PDF file uploads
+* Backend API for project submissions
 
-## Showcase
-
-The showcase includes:
-
-* Kitchens
-* Dining Rooms
-* Living Rooms
-* Bedrooms
-
-Projects can include images, materials, descriptions, and project information.
-
-## Materials
-
-Supported materials include:
-
-* Oak
-* Walnut
-* Ash
-* Pine
-* MDF
-* Plywood
-* Veneer
-* Laminate
-
-## Project Submission
-
-The project form supports:
-
-* Name
-* Email
-* Phone
-* Contact method
-* Project type
-* Project description
-* Showcase piece
-* Dimensions
-* Appointment date and time
-* Site visit date and time
-* Reference files
-* Additional information
-
-Supported files:
-
-```text
-JPG
-PNG
-PDF
-```
-
-Maximum file size:
-
-```text
-10 MB
-```
 ## Tech Stack
 
-### Frontend
-
-* React
-* Vite
-* JavaScript
-* React Router
-* CSS
-
-### Backend
-
-* Node.js
-* Express
-* Multer
-* Nodemailer
-* CORS
-* dotenv
+| Frontend     | Backend         |
+| ------------ | --------------- |
+| React        | Node.js         |
+| Vite         | Express         |
+| JavaScript   | Multer          |
+| React Router | Nodemailer      |
+| CSS          | CORS and dotenv |
 
 ## Project Structure
 
 ```text
 bayt-customs/
-│
-├── bayt-customs/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── styles/
-│   │   ├── data/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   │
-│   ├── server/
-│   │   ├── uploads/
-│   │   ├── server.js
-│   │   ├── package.json
-│   │   └── .env
-│   │
-│   ├── package.json
-│   └── package-lock.json
-│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── styles/
+│   ├── data/
+│   ├── App.jsx
+│   └── main.jsx
+├── server/
+│   ├── uploads/
+│   ├── server.js
+│   └── package.json
+├── package.json
 └── README.md
 ```
 
@@ -122,7 +50,18 @@ bayt-customs/
 * Node.js
 * npm
 
-## Frontend Setup
+Check your installation:
+
+```bash
+node -v
+npm -v
+```
+
+## Getting Started
+
+### 1. Run the frontend
+
+Open a terminal in the frontend project directory:
 
 ```bash
 cd bayt-customs
@@ -130,9 +69,13 @@ npm install
 npm run dev
 ```
 
-The frontend will run on the Vite development server.
+Open the local URL displayed by Vite, usually:
 
-## Backend Setup
+**http://localhost:5173**
+
+### 2. Run the backend
+
+Open a **second terminal**:
 
 ```bash
 cd server
@@ -140,49 +83,37 @@ npm install
 npm start
 ```
 
-The backend runs on port `5001` by default.
-## API
+The backend runs at:
+
+**http://localhost:5001**
+
+Keep both terminals running while developing.
+
+> If Vite uses another port, open the URL displayed in your terminal.
+
+## API Endpoints
+
+| Method | Endpoint                  | Description                                         |
+| ------ | ------------------------- | --------------------------------------------------- |
+| `GET`  | `/`                       | Health check — verifies that the backend is running |
+| `POST` | `/api/project-submission` | Receives project specifications and uploaded files  |
 
 ### Health Check
 
-```http
-GET /
+Test the backend using your browser or terminal.
+
+| Item              | Value                                            |
+| ----------------- | ------------------------------------------------ |
+| URL               | `http://localhost:5001/`                         |
+| Method            | `GET`                                            |
+| Success status    | `200 OK`                                         |
+| Expected response | `{"message":"Bayt Customs backend is running."}` |
+
+Test with:
+
+```bash
+curl http://localhost:5001/
 ```
 
-### Project Submission
 
-```http
-POST /api/project-submission
-```
 
-The project submission endpoint accepts `multipart/form-data`.
-
-## Environment Variables
-
-Create a `.env` file inside the `server` directory.
-
-```env
-PORT=5001
-
-SMTP_HOST=
-SMTP_PORT=
-SMTP_SECURE=false
-SMTP_USER=
-SMTP_PASSWORD=
-
-EMAIL_FROM=
-EMAIL_TO=
-```
-
-Do not commit `.env` files or credentials to GitHub.
-
-## Security
-
-Do not commit:
-
-```text
-.env
-node_modules/
-uploads/
-dist/
-```
