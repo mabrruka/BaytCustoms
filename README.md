@@ -1,54 +1,69 @@
 # Bayt Customs
 
-A custom furniture and architectural woodworking website for **Bayt Customs**, based in Tripoli, Libya.
+A responsive custom furniture and architectural woodworking website for **Bayt Customs**.
 
-The website showcases bespoke furniture, materials, and collections, and allows customers to submit project specifications and appointment requests.
-
-**Languages:** English and Arabic (EN / AR)
+The website showcases bespoke furniture, materials, and collections, supports project inquiries, and includes an AI-powered chatbot called **Bayt Assistant**.
 
 ## Features
 
-* Responsive website
-* English and Arabic language options
-* Home, Showcase, Materials, and Contact pages
-* Custom furniture project inquiry form
-* Project dimensions and appointment requests
-* JPG, PNG, and PDF file uploads
-* Backend API for project submissions
+- Responsive website with English and Arabic language options.
+- Home, Showcase, Materials, and Contact pages.
+- Custom furniture project inquiries and appointment requests.
+- JPG, PNG, and PDF file uploads.
+- Floating AI chatbot for customer questions.
+- OpenRouter AI integration with a PDF knowledge base.
+- Backend API for chat and project submissions.
 
 ## Tech Stack
 
-| Frontend     | Backend         |
-| ------------ | --------------- |
-| React        | Node.js         |
-| Vite         | Express         |
-| JavaScript   | Multer          |
-| React Router | Nodemailer      |
-| CSS          | CORS and dotenv |
+| Frontend | Backend |
+|---|---|
+| React | Node.js |
+| Vite | Express |
+| JavaScript | Multer |
+| React Router | Nodemailer |
+| CSS | dotenv and CORS |
+| Geist Sans | pdf-parse |
+| | OpenRouter API |
+
+## Local Development Links
+
+| Service | URL | Description |
+|---|---|---|
+| Frontend | [http://localhost:5173](http://localhost:5173) | Website interface |
+| Backend | [http://localhost:5001](http://localhost:5001) | Backend API |
+| Health Check | [http://localhost:5001/](http://localhost:5001/) | Checks whether the backend is running |
 
 ## Project Structure
 
 ```text
 bayt-customs/
 ├── src/
+│   ├── assets/
 │   ├── components/
+│   │   ├── ChatWidget.jsx
+│   │   ├── Footer.jsx
+│   │   └── Navbar.jsx
 │   ├── pages/
 │   ├── styles/
-│   ├── data/
 │   ├── App.jsx
 │   └── main.jsx
 ├── server/
+│   ├── knowledge/
 │   ├── uploads/
+│   ├── .env
 │   ├── server.js
 │   └── package.json
 ├── package.json
 └── README.md
 ```
 
+
 ## Requirements
 
-* Node.js
-* npm
+- Node.js
+- npm
+- OpenRouter API key for AI chatbot responses
 
 Check your installation:
 
@@ -57,25 +72,33 @@ node -v
 npm -v
 ```
 
-## Getting Started
+## How to Run
 
-### 1. Run the frontend
+### 1. Start the Frontend
 
-Open a terminal in the frontend project directory:
+From the project root:
 
 ```bash
-cd bayt-customs
 npm install
+npm install @fontsource/geist-sans
 npm run dev
 ```
 
-Open the local URL displayed by Vite, usually:
+Open [http://localhost:5173](http://localhost:5173).
 
-**http://localhost:5173**
+### 2. Configure the Backend
 
-### 2. Run the backend
+Create `server/.env`:
 
-Open a **second terminal**:
+```env
+PORT=5001
+OPENROUTER_API_KEY=your_openrouter_api_key
+OPENROUTER_MODEL=openrouter/free
+```
+
+### 3. Start the Backend
+
+Open a second terminal:
 
 ```bash
 cd server
@@ -83,37 +106,33 @@ npm install
 npm start
 ```
 
-The backend runs at:
+If no `start` script is defined in `server/package.json`, run:
 
-**http://localhost:5001**
+```bash
+node server.js
+```
 
-Keep both terminals running while developing.
-
-> If Vite uses another port, open the URL displayed in your terminal.
+The backend should be available at [http://localhost:5001](http://localhost:5001).
 
 ## API Endpoints
 
-| Method | Endpoint                  | Description                                         |
-| ------ | ------------------------- | --------------------------------------------------- |
-| `GET`  | `/`                       | Health check — verifies that the backend is running |
-| `POST` | `/api/project-submission` | Receives project specifications and uploaded files  |
-
-### Health Check
-
-Test the backend using your browser or terminal.
-
-| Item              | Value                                            |
-| ----------------- | ------------------------------------------------ |
-| URL               | `http://localhost:5001/`                         |
-| Method            | `GET`                                            |
-| Success status    | `200 OK`                                         |
-| Expected response | `{"message":"Bayt Customs backend is running."}` |
-
-Test with:
-
-```bash
-curl http://localhost:5001/
-```
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/` | Backend health check |
+| `POST` | `/api/project-submission` | Submits project details and uploaded files |
+| `POST` | `/api/chat` | Sends a message to Bayt Assistant and returns an AI-generated response |
 
 
+## AI Chatbot
+
+Bayt Assistant is available through a floating chat widget in the bottom-right corner of the website.
+
+- Answers customer questions in English or Arabic.
+- Uses OpenRouter to generate responses.
+- Retrieves relevant information from a local PDF knowledge base.
+- Avoids inventing unconfirmed business details.
+
+Knowledge base file:
+
+`server/knowledge/bayt_customs_temporary_chatbot_knowledge_base.pdf`
 
