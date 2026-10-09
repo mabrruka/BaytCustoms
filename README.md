@@ -34,7 +34,30 @@ The website showcases bespoke furniture, materials, and collections, supports pr
 | Backend | [http://localhost:5001](http://localhost:5001) | Backend API |
 | Health Check | [http://localhost:5001/](http://localhost:5001/) | Checks whether the backend is running |
 
-*These are the default development URLs. Use the URLs printed in your terminal if your ports differ.*
+## Project Structure
+
+```text
+bayt-customs/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── ChatWidget.jsx
+│   │   ├── Footer.jsx
+│   │   └── Navbar.jsx
+│   ├── pages/
+│   ├── styles/
+│   ├── App.jsx
+│   └── main.jsx
+├── server/
+│   ├── knowledge/
+│   ├── uploads/
+│   ├── .env
+│   ├── server.js
+│   └── package.json
+├── package.json
+└── README.md
+```
+
 
 ## Requirements
 
@@ -100,7 +123,6 @@ The backend should be available at [http://localhost:5001](http://localhost:5001
 | `POST` | `/api/chat` | Sends a message to Bayt Assistant and returns an AI-generated response |
 
 
-
 ## AI Chatbot
 
 Bayt Assistant is available through a floating chat widget in the bottom-right corner of the website.
@@ -113,28 +135,4 @@ Bayt Assistant is available through a floating chat widget in the bottom-right c
 Knowledge base file:
 
 `server/knowledge/bayt_customs_temporary_chatbot_knowledge_base.pdf`
-
-## Project Structure
-
-```text
-bayt-customs/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   │   ├── ChatWidget.jsx
-│   │   ├── Footer.jsx
-│   │   └── Navbar.jsx
-│   ├── pages/
-│   ├── styles/
-│   ├── App.jsx
-│   └── main.jsx
-├── server/
-│   ├── knowledge/
-│   ├── uploads/
-│   ├── .env
-│   ├── server.js
-│   └── package.json
-├── package.json
-└── README.md
-```
 
